@@ -1,14 +1,22 @@
 pipeline{
     agent any
     stages{
-        stage('First Stage'){
+        stage('Build Stage'){
             steps{
-                sh 'echo "Hello World"'
+                sh 'chmod +x ./build.sh'
+                sh './build.sh'
             }
         }
-        stage('Second Stage'){
+        stage('Test Stage'){
             steps{
-                sh 'pwd'
+                sh 'chmod +x ./test.sh'
+                sh './test.sh'
+            }
+        }
+        stage('Deploy Stage'){
+            steps{
+                sh 'chmod +x ./deploy.sh'
+                sh './deploy.sh'
             }
         }
     }
